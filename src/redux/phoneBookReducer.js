@@ -1,6 +1,6 @@
 // import {Type} from './actionTypes';
-import {combineReducers, createReducer} from '@reduxjs/toolkit';
-import {addContact, deleteContact, filterUpdated, loadContacts} from './phoneBookActions';
+import { combineReducers, createReducer } from '@reduxjs/toolkit';
+import { addContact, deleteContact, filterUpdated } from './phoneBookActions';
 
 const items = createReducer([], {
   [addContact]: (state, action) => {
@@ -11,10 +11,6 @@ const items = createReducer([], {
     return [
       ...state.filter(contact => contact.id !== action.payload)
     ]
-  },
-
-  [loadContacts]: (state, action) => {
-    return JSON.parse(action.payload);
   }
 });
 
