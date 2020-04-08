@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import styled from "styled-components";
 import withTheme from "../hoc/withTheme";
 import {connect} from 'react-redux';
-import * as phoneBookActions from '../redux/phoneBookActions';
+import phoneBookActions from '../redux/phoneBookActions';
 
 const FilterInput = styled.input`
 max-width: 40%;
@@ -28,7 +28,8 @@ class Filter extends Component {
 }
 
 const mapDispatchToProps = {
-  filterUpdated: (filter) => phoneBookActions.filterUpdated(filter),
+  filterUpdated: (filter) => phoneBookActions.changeFilter(filter),
+
 };
 
 export default connect(null, mapDispatchToProps)(withTheme(Filter));

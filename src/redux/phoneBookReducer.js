@@ -1,29 +1,53 @@
 // import {Type} from './actionTypes';
-import { combineReducers, createReducer } from '@reduxjs/toolkit';
-import { addContact, deleteContact, filterUpdated } from './phoneBookActions';
+import {combineReducers, createReducer} from '@reduxjs/toolkit';
+import PhoneBookActions from './phoneBookActions';
+
+const AddContact = (state, action) =>
+  [...state, action.payload]
+;
+
+const removeContact = (state, action) =>
+  state.filter(contact => contact.id !== action.payload);
 
 const items = createReducer([], {
-  [addContact]: (state, action) => {
-    return [...state, action.payload]
-  },
-
-  [deleteContact]: (state, action) => {
-    return [
-      ...state.filter(contact => contact.id !== action.payload)
-    ]
-  }
+  [PhoneBookActions.fetchContactSuccess]: (state, action) => action.payload,
+  [PhoneBookActions.addContactSuccess]: AddContact,
+  [PhoneBookActions.removeContactSuccess]: removeContact
 });
 
-const filter = createReducer('', {
+const filter = createReducer("", {
+  [PhoneBookActions.changeFilter]: (state, action) => action.payload
+});
 
-  [filterUpdated]: (state, action) => {
-    return action.payload;
-  },
+const loading = createReducer(false, {
+  [PhoneBookActions.fetchContactRequest]: () => true,
+  [PhoneBookActions.addContactRequest]: () => true,
+  [PhoneBookActions.removeContactRequest]: () => true,
+
+  [PhoneBookActions.addContactSuccess]: () => false,
+  [PhoneBookActions.fetchContactSuccess]: () => false,
+  [PhoneBookActions.removeContactSuccess]: () => false,
+
+  [PhoneBookActions.addContactError]: () => false,
+  [PhoneBookActions.fetchContactError]: () => false,
+  [PhoneBookActions.removeContactError]: () => false
+});
+
+const error = createReducer("", {
+  [PhoneBookActions.fetchContactRequest]: () => "",
+  [PhoneBookActions.addContactRequest]: () => "",
+  [PhoneBookActions.removeContactRequest]: () => "",
+
+  [PhoneBookActions.addContactError]: (state, action) => JSON.stringify(action.payload.message),
+  [PhoneBookActions.fetchContactError]: (state, action) => action.payload,
+  [PhoneBookActions.removeContactError]: (state, action) => action.payload
 });
 
 export default combineReducers({
   items,
-  filter
+  filter,
+  loading,
+  error
 });
 
 

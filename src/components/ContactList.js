@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ContactListItem from "./ContactListItem";
 import withTheme from "../hoc/withTheme";
 import {connect} from 'react-redux';
-import * as phoneBookActions from '../redux/phoneBookActions';
+import phoneBookOperations from '../redux/phoneBookOperations';
 
 const List = styled.ul`
 max-width: 400px;
@@ -44,7 +44,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onDeleteContact: (id) => dispatch(phoneBookActions.deleteContact(id)),
+    onDeleteContact: (id) => dispatch(phoneBookOperations.removeContact(id)),
   }
 };
 

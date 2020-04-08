@@ -1,46 +1,28 @@
-// import { Type } from './actionTypes'
-import { createAction } from '@reduxjs/toolkit';
-import { uuid } from "uuidv4";
+import {createAction} from '@reduxjs/toolkit';
 
-export const addContact = createAction('ADD_CONTACT', (name, number) => ({
-  payload: {
-    id: uuid(),
-    name,
-    number
-  }
-}));
-export const deleteContact = createAction('DELETE_CONTACT');
-export const filterUpdated = createAction('UPDATE_FILTER');
-//
-// export const addContact = (name, number) => {
-//
-//     return {
-//         type: Type.ADD_CONTACT,
-//         payload: {
-//             id: uuid(),
-//             name: name,
-//             number: number
-//         }
-//     }
-// };
-//
-// export const deleteContact = (id) => {
-//     return {
-//         type: Type.DELETE_CONTACT,
-//         payload: { id }
-//     }
-// };
-//
-// export const filterUpdated = (filter) => {
-//     return {
-//         type: Type.UPDATE_FILTER,
-//         payload: { filter }
-//     }
-// };
-//
-// export const loadContacts = (contacts) => {
-//     return {
-//         type: Type.LOAD_CONTACTS,
-//         payload:  {contacts}
-//     }
-// };
+const addContactRequest = createAction("contacts/addRequest");
+const addContactSuccess = createAction("contacts/addSuccess");
+const addContactError = createAction("contacts/addError");
+
+const fetchContactRequest = createAction("contacts/fetchRequest");
+const fetchContactSuccess = createAction("contacts/fetchSuccess");
+const fetchContactError = createAction("contacts/fetchError");
+
+const removeContactRequest = createAction("contacts/removeRequest");
+const removeContactSuccess = createAction("contacts/removeSuccess");
+const removeContactError = createAction("contacts/removeError");
+
+const changeFilter = createAction("contacts/changeFilter");
+
+export default {
+  addContactRequest,
+  addContactSuccess,
+  addContactError,
+  fetchContactRequest,
+  fetchContactSuccess,
+  fetchContactError,
+  removeContactRequest,
+  removeContactSuccess,
+  removeContactError,
+  changeFilter
+}
