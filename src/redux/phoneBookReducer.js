@@ -38,9 +38,9 @@ const error = createReducer("", {
   [PhoneBookActions.addContactRequest]: () => "",
   [PhoneBookActions.removeContactRequest]: () => "",
 
-  [PhoneBookActions.addContactError]: (state, action) => JSON.stringify(action.payload.message),
-  [PhoneBookActions.fetchContactError]: (state, action) => action.payload,
-  [PhoneBookActions.removeContactError]: (state, action) => action.payload
+  [PhoneBookActions.addContactError]: (state, action) => action.payload.message,
+  [PhoneBookActions.fetchContactError]: (state, action) => action.payload.message,
+  [PhoneBookActions.removeContactError]: (state, action) => action.payload.message
 });
 
 export default combineReducers({

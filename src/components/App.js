@@ -26,7 +26,7 @@ class App extends Component {
         <AddContactForm />
         <h3>Contacts</h3>
         <Filter />
-        {this.props.contacts.loading && <Loader type="TailSpin" color="blue" height={80} width={80} />}
+        {this.props.contacts.loading && <Loader type="TailSpin" color="blue" />}
         {!this.props.contacts.loading && <ContactList />}
       </Container>
     )
