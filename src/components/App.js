@@ -7,7 +7,8 @@ import Container from "./Container";
 import withTheme from "../hoc/withTheme";
 import { connect } from "react-redux";
 import phoneBookOperations from '../redux/phoneBookOperations';
-import Loader from 'react-loader-spinner'
+import Loader from 'react-loader-spinner';
+import phoneBookSelectors from '../redux/phoneBookSelectors'
 
 
 
@@ -20,14 +21,14 @@ class App extends Component {
     return (
 
       <Container>
-        {this.props.contacts.error && <h3>{this.props.contacts.error}</h3>}
+        {this.props.error && <h3>{this.props.error}</h3>}
         <ThemeSelector />
         <h2>PhoneBook</h2>
         <AddContactForm />
         <h3>Contacts</h3>
         <Filter />
-        {this.props.contacts.loading && <Loader type="TailSpin" color="blue" />}
-        {!this.props.contacts.loading && <ContactList />}
+        {this.props.loading && <Loader type="TailSpin" color="blue" />}
+        {!this.props.loading && <ContactList />}
       </Container>
     )
   }
@@ -38,7 +39,11 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = state => {
-  return {contacts: state.contacts}
+  return {
+    contacts: phoneBookSelectors.getContacts(state),
+    loading: phoneBookSelectors.getLoading(state),
+    error: phoneBookSelectors.getError(state)
+  }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps) (withTheme(App));
+export default connect(mapStateToProps, mapDispatchToProps)(withTheme(App));
