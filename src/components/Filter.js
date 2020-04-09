@@ -1,8 +1,8 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import withTheme from "../hoc/withTheme";
-import {connect} from 'react-redux';
-import phoneBookActions from '../redux/phoneBookActions';
+import { connect } from 'react-redux';
+import phoneBookActions from '../redux/phoneBook/phoneBookActions';
 
 const FilterInput = styled.input`
 max-width: 40%;
@@ -14,7 +14,7 @@ background-color: ${props => props.themeProps.bodybg};
 
 class Filter extends Component {
   handleChange = e => {
-    const {value} = e.target;
+    const { value } = e.target;
 
     this.props.filterUpdated(value);
   };
@@ -22,7 +22,7 @@ class Filter extends Component {
   render() {
     return (
       <FilterInput themeProps={this.props.theme.config[this.props.theme.type]} type="text" onChange={this.handleChange}
-                   name="filter" autoComplete='off'/>
+        name="filter" autoComplete='off' />
     )
   }
 }

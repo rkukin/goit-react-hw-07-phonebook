@@ -3,8 +3,8 @@ import styled from "styled-components";
 import ContactListItem from "./ContactListItem";
 import withTheme from "../hoc/withTheme";
 import { connect } from 'react-redux';
-import phoneBookOperations from '../redux/phoneBookOperations';
-import phoneBookSelectors from '../redux/phoneBookSelectors';
+import phoneBookOperations from '../redux/phoneBook/phoneBookOperations';
+import phoneBookSelectors from '../redux/phoneBook/phoneBookSelectors';
 
 const List = styled.ul`
 max-width: 400px;

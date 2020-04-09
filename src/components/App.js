@@ -6,9 +6,9 @@ import ThemeSelector from "./ThemeSelector";
 import Container from "./Container";
 import withTheme from "../hoc/withTheme";
 import { connect } from "react-redux";
-import phoneBookOperations from '../redux/phoneBookOperations';
+import phoneBookOperations from '../redux/phoneBook/phoneBookOperations';
 import Loader from 'react-loader-spinner';
-import phoneBookSelectors from '../redux/phoneBookSelectors'
+import phoneBookSelectors from '../redux/phoneBook/phoneBookSelectors'
 
 
 

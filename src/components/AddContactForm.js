@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styled from "styled-components";
 import withTheme from "../hoc/withTheme";
 import { connect } from 'react-redux';
-import phoneBookOperations from '../redux/phoneBookOperations';
-import phoneBookSelectors from '../redux/phoneBookSelectors'
+import phoneBookOperations from '../redux/phoneBook/phoneBookOperations';
+import phoneBookSelectors from '../redux/phoneBook/phoneBookSelectors'
 
 const ContactsForm = styled.form`
 border: 2px solid ${props => props.themeProps.fontColor};
